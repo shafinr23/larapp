@@ -177,7 +177,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
 
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link active">
+                        <a href="#" class="nav-link ">
                             <i class="fas fa-cog"></i>
                             <p>
                                 Management
@@ -186,18 +186,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                                <router-link to="/users" class="nav-link ">
+                                    <i class="fas fa-users "></i>
+
+                                    <p>Users</p>
+                                </router-link>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ">
                                     <i class="fa fa-circle-o "></i>
 
                                     <p>Active Page</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Inactive Page</p>
-                                </a>
-                            </li>
+
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -211,13 +213,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <li class="nav-item">
 
-                        <a href="#" class="nav-link">
+                        <a class="nav-link"href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                             <i class="nav-icon fas fa-power-off"></i>
-                            <p>
-                                LogOut
-                                {{--                                <span class="right badge badge-danger">New</span>--}}
-                            </p>
+                            <p>{{ __('Logout') }}</p>
                         </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
                 </ul>
             </nav>
